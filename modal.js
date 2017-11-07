@@ -79,9 +79,21 @@ $close.click(function(e){
 
 $("#trigger_url").click(function(){
 	
-	var user_input = $("#url_data").val();
-	modal.open({content: $(' <section><iframe frameborder="0" width="100%" height="100%" src="'+user_input+'" style="position: relative; height: 100%; width: 100%;"></iframe>	</section>'), width: "100%", height: "100%"});
 	
+ 
+	var user_input = $("#url_data").val();
+	
+	var res = user_input.match(/(http(s?))\:\/\//gi);
+	if(!res)
+	{
+		
+	alert("The URL is InValid!(Did you entered http(s)://www ?)");
+	}
+	else
+	{
+		
+	modal.open({content: $(' <section><meta name="viewport" content="width=device-width, initial-scale=1"><iframe frameborder="0" width="100%" height="100%" src="'+user_input+'" style="position: relative; height: 100%; width: 100%;"></iframe>	</section>'), width: "90%", height: "90%"});
+	}
 	//modal.open({content: $("<p>Howdy</p>"), width: "500px", height: "200px"});
 });
 
